@@ -18,8 +18,7 @@ from chainer.training import extensions
 import model
 from music_processor import *
 
-def get_data(feats, answers, major_note_index,
-				samplerate, soundlen=15, split=1):
+def get_data(feats, answers, major_note_index, samplerate, soundlen=15, split=1):
 	"""
 	Args:
 		feats: song.feats; Audio module
@@ -42,8 +41,7 @@ def get_data(feats, answers, major_note_index,
 			
 			for k in range(-1, dist+2):
 				
-				X = feats[:,:,major_note_index[idx[i]] - soundlen // 2 + k:
-								major_note_index[idx[i]] + soundlen // 2 + k + 1]
+				X = feats[:,:,major_note_index[idx[i]] - soundlen // 2 + k:major_note_index[idx[i]] + soundlen // 2 + k + 1]
 				y = answers[major_note_index[idx[i]] + k]
 				
 				data.append((np.array(X), y))
@@ -53,8 +51,7 @@ def get_data(feats, answers, major_note_index,
 def data_builder(songs):
 	train = []
 	for song in songs:
-		train.append(get_data(song.feats, song.answer, song.major_note_index, 
-				song.samplerate, soundlen, split=0.2))
+		train.append(get_data(song.feats, song.answer, song.major_note_index, song.samplerate, soundlen, split=0.2))
 
 	return train
 
@@ -72,17 +69,12 @@ def train(songs, epochs, soundlen, don_ka=0):
 		song.answer = np.zeros((song.feats.shape[2]))
 
 		if don_ka == 0:
-			song.major_note_index = np.rint(timing[np.where(sound != 0)]
-											* song.samplerate / 512).astype(np.int32)
+			song.major_note_index = np.rint(timing[np.where(sound != 0)] * song.samplerate / 512).astype(np.int32)
 		else:
-			song.major_note_index = np.rint(timing[np.where(sound == don_ka)]
-											* song.samplerate / 512).astype(np.int32)
-			song.minor_note_index = np.rint(timing[np.where(sound == 3 - don_ka)]
-											* song.samplerate / 512).astype(np.int32)
-		song.major_note_index = np.delete(song.major_note_index, 
-											np.where(song.major_note_index >= song.feats.shape[2]))
-		song.minor_note_index = np.delete(song.minor_note_index,
-											np.where(song.minor_note_index >= song.feats.shape[2]))
+			song.major_note_index = np.rint(timing[np.where(sound == don_ka)] * song.samplerate / 512).astype(np.int32)
+			song.minor_note_index = np.rint(timing[np.where(sound == 3 - don_ka)] * song.samplerate / 512).astype(np.int32)
+		song.major_note_index = np.delete(song.major_note_index, np.where(song.major_note_index >= song.feats.shape[2]))
+		song.minor_note_index = np.delete(song.minor_note_index, np.where(song.minor_note_index >= song.feats.shape[2]))
 
 		song.answer[song.major_note_index] = 1
 		song.answer[song.minor_note_index] = 0.26
