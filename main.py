@@ -25,30 +25,28 @@ def get_data(feats, answers, major_note_index, samplerate, soundlen=15, split=1)
 		answers: song.answers; Audio module
 		major_note_index: 
 		samplerate: song.samplerate; Audio module
-		soundlen: =15.
+		soundlen: =15. 学習モデルに渡す画像データの横方向の長さ．ここでは(80 * 15)サイズのデータを使用している
 		split: =1. 
 	"""
+
 	minspace = 0.1
 	maxspace = 0.7
 	idx = np.random.permutation(major_note_index.shape[0] - soundlen) + soundlen // 2
 	data = []
 
 	for i in range(int(idx.shape[0] * split)):
-		
 		dist = major_note_index[idx[i] + 1] - major_note_index[idx[i]]
 		
-		if dist < maxspace * samplerate / 512 and dist > minspace * samplerate / 512:
-			
+		if dist < maxspace * samplerate / 512 and dist > minspace * samplerate / 512:	
 			for k in range(-1, dist+2):
-				
 				X = feats[:,:,major_note_index[idx[i]] - soundlen // 2 + k:major_note_index[idx[i]] + soundlen // 2 + k + 1]
 				y = answers[major_note_index[idx[i]] + k]
-				
 				data.append((np.array(X), y))
+	
 	return data		
 	
 
-def data_builder(songs):
+def data_builder(songs, soundlen):
 	train = []
 	for song in songs:
 		train.append(get_data(song.feats, song.answer, song.major_note_index, song.samplerate, soundlen, split=0.2))
@@ -84,8 +82,8 @@ def train(songs, epochs, soundlen, don_ka=0):
 	# build model
 	model = L.Classifier(model.convNet())
 
-	train = data_builder(songs)
-	test = data_builder(songs)
+	train = data_builder(songs, soundlen)
+	test = data_builder(songs, soundlen)
 	train_iter = iterators.SerialIterator(train, 256)
 	test_iter = iterators.SerialIterator(test, 256, repeat=False, shuffle=False)
 	optimizer = O.Adam().setup(model)
