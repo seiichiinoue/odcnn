@@ -228,7 +228,7 @@ def multi_fft_and_melscale(songs, nhop=512, nffts=[1024, 2048, 4096], mel_nband=
         songs[i].feats = fft_and_melscale(songs[i], nhop, nffts, mel_nband, mel_freqlo, mel_freqhi)
 
 
-def musicforlistening(serv, synthesize=True, difficulty=0):
+def music_for_listening(serv, synthesize=True, difficulty=0):
 
     song = Audio(glob(serv+"/*.ogg")[0])
     if synthesize:
@@ -239,7 +239,7 @@ def musicforlistening(serv, synthesize=True, difficulty=0):
     song.save("./data/savedmusic.wav")
 
 
-def musicforvalidation(serv, deletemusic=True, verbose=False, difficulty=1):
+def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
 
     song = Audio(glob(serv+"/*.ogg")[0], stereo=False)
     song.import_tja(glob(serv+"/*.tja")[-1], difficulty=difficulty)
@@ -255,7 +255,7 @@ def musicforvalidation(serv, deletemusic=True, verbose=False, difficulty=1):
         pickle.dump(song, f)
 
 
-def musicforlearning(serv, deletemusic=True, verbose=False, difficulty=0, diff=False, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
+def music_for_learning(serv, deletemusic=True, verbose=False, difficulty=0, diff=False, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
     
     songplaces = glob(serv)
     songs = []
@@ -276,7 +276,7 @@ def musicforlearning(serv, deletemusic=True, verbose=False, difficulty=0, diff=F
         pickle.dump(songs, f)
 
 
-def musicfortest(serv, deletemusic=True, verbose=False):
+def music_for_test(serv, deletemusic=True, verbose=False):
 
     song = Audio(glob(serv+"/*.ogg")[0], stereo=False)
     # song.import_tja(glob(serv+"/*.tja")[-1])
@@ -290,15 +290,15 @@ if __name__ == "__main__":
     # how to use
 
     # serv = "./data/songs/"
-    # musicfortest(serv)
+    # music_for_test(serv)
     serv = "./data/songs"
-    musicfortest(serv)
-    # musicforvalidation(serv, difficulty=0)
+    music_for_test(serv)
+    # music_for_validation(serv, difficulty=0)
 
-    # musicforlistening(serv)
+    # music_for_listening(serv)
 
     serv = "./taitatsudata/*"
-    # musicforlearning(serv, verbose=True, difficulty=0, diff=True)
+    # music_for_learning(serv, verbose=True, difficulty=0, diff=True)
     # for reducedNet
-    # musicforlearning(serv, verbose=True, difficulty=0, diff=True,
+    # music_for_learning(serv, verbose=True, difficulty=0, diff=True,
                      # mel_freqhi=8000.0, mel_nband=10, include_zero_cross=False)
