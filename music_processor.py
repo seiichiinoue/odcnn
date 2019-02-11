@@ -175,7 +175,7 @@ class Audio:
                         self.data[int(stamp*self.samplerate):int(stamp*self.samplerate)+kalen] += kasound
 
 
-def Frame(data, nhop, nfft):
+def make_frame(data, nhop, nfft):
     """
     helping function for fftandmelscale.
     細かい時間に切り分けたものを学習データとするため，nhop(512)ずつずらしながらnfftサイズのデータを配列として返す
@@ -203,7 +203,7 @@ def fft_and_melscale(song, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel
         filt = mel(song.samplerate, nfft, mel_nband, mel_freqlo, mel_freqhi)
         
         # get normal frame
-        frame = Frame(song.data, nhop, nfft)
+        frame = make_frame(song.data, nhop, nfft)
         print(frame.shape)
 
         # melscaling
