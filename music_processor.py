@@ -190,8 +190,7 @@ def Frame(data, nhop, nfft):
 def fft_and_melscale(song, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
     """
     fft and melscale method.
-    fft: nfft = [1024, 2048, 4096]; サンプルの切り取る長さを変えながらデータからnp.arrayを抽出して
-         高速フーリエ変換を行う．
+    fft: nfft = [1024, 2048, 4096]; サンプルの切り取る長さを変えながらデータからnp.arrayを抽出して高速フーリエ変換を行う．
     melscale: 周波数の次元を削減するとともに，log10の値を取っている．
     """
 
