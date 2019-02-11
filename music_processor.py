@@ -44,8 +44,7 @@ class Audio:
 
     def plotaudio(self, start_t, stop_t):
 
-        plt.plot(np.linspace(start_t, stop_t, stop_t-start_t),
-                 self.data[start_t:stop_t, 0])
+        plt.plot(np.linspace(start_t, stop_t, stop_t-start_t), self.data[start_t:stop_t, 0])
         plt.show()
 
     def save(self, filename="./savedmusic.wav", start_t=0, stop_t=None):
@@ -149,8 +148,7 @@ class Audio:
                     if stamp[1] in (1, 3, 5, 6, 7):
                         self.data[timing:timing+donlen] += donsound
                     elif stamp[1] in (2, 4):
-                        self.data[timing:timing +
-                                  kalen] += kasound
+                        self.data[timing:timing+kalen] += kasound
                 except ValueError:
                     pass
         
@@ -243,8 +241,7 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
 
     song = Audio(glob(serv+"/*.ogg")[0], stereo=False)
     song.import_tja(glob(serv+"/*.tja")[-1], difficulty=difficulty)
-    song.feats = fft_and_melscale(song, nhop, nffts, mel_nband,
-                        mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
+    song.feats = fft_and_melscale(song, nhop, nffts, mel_nband, mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
 
     if deletemusic:
         song.data = None
@@ -252,11 +249,7 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
         pickle.dump(song, f)
 
 
-def music_for_train(serv, deletemusic=True, verbose=False, 
-                       difficulty=0, diff=False, nhop=512, 
-                       nffts=[1024, 2048, 4096], mel_nband=80, 
-                       mel_freqlo=27.5, mel_freqhi=16000.0, 
-                       include_zero_cross=False):
+def music_for_train(serv, deletemusic=True, verbose=False, difficulty=0, diff=False, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
     
     songplaces = glob(serv)
     songs = []
@@ -267,14 +260,11 @@ def music_for_train(serv, deletemusic=True, verbose=False,
             print(songplace)
         
         song = Audio(glob(songplace+"/*.ogg")[0])
-        song.import_tja(glob(songplace+"/*.tja")
-                       [-1], difficulty=difficulty, diff=True)
+        song.import_tja(glob(songplace+"/*.tja")[-1], difficulty=difficulty, diff=True)
         song.data = (song.data[:, 0]+song.data[:, 1])/2
         songs.append(song)
 
-    multi_fft_and_melscale(songs, nhop, nffts, mel_nband,
-                           mel_freqlo, mel_freqhi, 
-                           include_zero_cross=include_zero_cross)
+    multi_fft_and_melscale(songs, nhop, nffts, mel_nband, mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
     if deletemusic:
         for song in songs:
             song.data = None

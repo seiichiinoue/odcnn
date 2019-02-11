@@ -15,13 +15,13 @@ print("feats: shape: ", song.feats.shape)
 
 # save file as pickle format
 with open('./data/pickles/testdata.pickle', mode="wb") as f:
-	pickle.dump(song, f)
+    pickle.dump(song, f)
 
 print("data import and save complete!")
 
 # recover data from pickle
 with open('./data/pickles/testdata.pickle', mode="rb") as f:
-	song = pickle.load(f)
+    song = pickle.load(f)
 
-	print("loaded data from pickle successfully!")
+    print("loaded data from pickle successfully!")
 
