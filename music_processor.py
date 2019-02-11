@@ -252,24 +252,34 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
         pickle.dump(song, f)
 
 
-def music_for_learning(serv, deletemusic=True, verbose=False, difficulty=0, diff=False, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
+def music_for_train(serv, deletemusic=True, verbose=False, 
+                       difficulty=0, diff=False, nhop=512, 
+                       nffts=[1024, 2048, 4096], mel_nband=80, 
+                       mel_freqlo=27.5, mel_freqhi=16000.0, 
+                       include_zero_cross=False):
     
     songplaces = glob(serv)
     songs = []
+    
     for songplace in songplaces:
+        
         if verbose:
             print(songplace)
+        
         song = Audio(glob(songplace+"/*.ogg")[0])
         song.import_tja(glob(songplace+"/*.tja")
                        [-1], difficulty=difficulty, diff=True)
         song.data = (song.data[:, 0]+song.data[:, 1])/2
         songs.append(song)
+
     multi_fft_and_melscale(songs, nhop, nffts, mel_nband,
-                        mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
+                           mel_freqlo, mel_freqhi, 
+                           include_zero_cross=include_zero_cross)
     if deletemusic:
         for song in songs:
             song.data = None
-    with open('./data/pickles/learningdata.pickle', mode='wb') as f:
+    
+    with open('./data/pickles/traindata.pickle', mode='wb') as f:
         pickle.dump(songs, f)
 
 
@@ -294,7 +304,7 @@ if __name__ == "__main__":
         >>>music_for_listening(serv)
     Learning:
         >>>serv = "./taitatsudata/*"
-        >>>music_for_learning(serv, verbose=True, difficulty=0, diff=True)
+        >>>music_for_train(serv, verbose=True, difficulty=0, diff=True)
     """
 
     serv = "./data/songs"
