@@ -245,10 +245,7 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
     song.import_tja(glob(serv+"/*.tja")[-1], difficulty=difficulty)
     song.feats = fft_and_melscale(song, nhop, nffts, mel_nband,
                         mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
-    # for i in range(3):
-    # specshow(song.feats[i])
-    # plt.colorbar()
-    # plt.show()
+
     if deletemusic:
         song.data = None
     with open('./data/pickles/valdata.pickle', mode='wb') as f:
@@ -286,19 +283,19 @@ def music_for_test(serv, deletemusic=True, verbose=False):
 
 
 if __name__ == "__main__":
+    
+    """
+    Test:
+        >>>serv = "./data/songs/"
+        >>>music_for_test(serv)
+    Validation:
+        >>>music_for_validation(serv, difficulty=0)
+    Listening:
+        >>>music_for_listening(serv)
+    Learning:
+        >>>serv = "./taitatsudata/*"
+        >>>music_for_learning(serv, verbose=True, difficulty=0, diff=True)
+    """
 
-    # how to use
-
-    # serv = "./data/songs/"
-    # music_for_test(serv)
     serv = "./data/songs"
     music_for_test(serv)
-    # music_for_validation(serv, difficulty=0)
-
-    # music_for_listening(serv)
-
-    serv = "./taitatsudata/*"
-    # music_for_learning(serv, verbose=True, difficulty=0, diff=True)
-    # for reducedNet
-    # music_for_learning(serv, verbose=True, difficulty=0, diff=True,
-                     # mel_freqhi=8000.0, mel_nband=10, include_zero_cross=False)
