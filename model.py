@@ -46,8 +46,4 @@ class convNet(Chain):
 		x = F.dropout(F.relu(self.fc2(x)))
 		
 		return F.sigmoid(self.fc3(x))
-
-
-
-
-	
+		
