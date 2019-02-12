@@ -47,7 +47,7 @@ def get_data(feats, answers, major_note_index, samplerate, soundlen=15):
         if dist < maxspace * samplerate / 512 and dist > minspace * samplerate / 512:    
             for k in range(-1, dist+2):
                 X.append(feats[:,:,major_note_index[idx[i]] - soundlen // 2 + k:major_note_index[idx[i]] + soundlen // 2 + k + 1])
-                y.append(answers[major_note_index[idx[i]] + k])
+                y.append([answers[major_note_index[idx[i]] + k]])
     
     return X, y
     
