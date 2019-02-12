@@ -44,6 +44,7 @@ class convNet(Chain):
         x = F.dropout(x)
         x = F.dropout(F.relu(self.fc1(x)))
         x = F.dropout(F.relu(self.fc2(x)))
+        y = F.sigmoid(self.fc3(x))
         
-        return F.sigmoid(self.fc3(x))
+        return y
                                 
