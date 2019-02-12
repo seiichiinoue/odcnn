@@ -14,7 +14,7 @@ import chainer.links as L
 import chainer.optimizers as O
 from chainer.training import extensions
 # my modules
-import model
+from models import convNet
 from music_processor import *
 
 def get_data(feats, answers, major_note_index, samplerate, soundlen=15, split=1):
@@ -26,6 +26,12 @@ def get_data(feats, answers, major_note_index, samplerate, soundlen=15, split=1)
         samplerate: song.samplerate; Audio module
         soundlen: =15. 学習モデルに渡す画像データの横方向の長さ．ここでは(80 * 15)サイズのデータを使用している
         split: =1. 
+    Valiables:
+        minspace: minimum space between major note indexs
+        maxspace: maximum space between major note indexs
+        idx: index of feats
+        dist: distance of two notes
+        data: train data of one song
     """
 
     minspace = 0.1
@@ -46,6 +52,14 @@ def get_data(feats, answers, major_note_index, samplerate, soundlen=15, split=1)
     
 
 def data_builder(songs, soundlen):
+    """helping function to build Chainer formated dataset.
+    Args:
+        songs: the list of song
+        soundlen: width of one train data's image 
+    Variables:
+        train: the list of tuple; (X, y) for training with Chainer
+    """
+
     train = []
     for song in songs:
         train.append(get_data(song.feats, song.answer, song.major_note_index, song.samplerate, soundlen, split=0.2))
@@ -57,10 +71,16 @@ def data_builder(songs, soundlen):
 def train(songs, epochs, soundlen, don_ka=0):
     """
     Args:
+        songs: the list of song
+        epochs: number of train 
+        soundlen: width of one train data's image
+        don-ka: don(1) or ka(2) or both(0)
+
     """
 
     for song in songs:
         
+        print(song.timestamp)
         timing = song.timestamp[:, 0]
         sound = song.timestamp[:, 1]
         song.answer = np.zeros((song.feats.shape[2]))
@@ -75,11 +95,11 @@ def train(songs, epochs, soundlen, don_ka=0):
 
         song.answer[song.major_note_index] = 1
         song.answer[song.minor_note_index] = 0.26
-        # song.answer = milden(song.answer)
+        song.answer = milden(song.answer)
 
 
     # build model
-    model = L.Classifier(model.convNet())
+    model = L.Classifier(convNet())
 
     train = data_builder(songs, soundlen)
     test = data_builder(songs, soundlen)
@@ -103,8 +123,14 @@ def train(songs, epochs, soundlen, don_ka=0):
 
 
 if __name__ == '__main__':
-    with open('./data/pickles/traindata.pickle', mode='rb') as f:
-        songs = pickle.load(f)
+    with open('./data/pickles/testdata.pickle', mode='rb') as f:
+        songs = [pickle.load(f)]
 
-    train(songs=songs, epochs=30, soundlen=15)
+
+    # with open('./data/pickles/traindata.pickle', mode='rb') as f:
+    #     songs = pickle.load(f)
+
+        train(songs=songs, epochs=30, soundlen=15)
+
+
 
