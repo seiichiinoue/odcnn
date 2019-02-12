@@ -315,6 +315,16 @@ if __name__ == "__main__":
     >>>serv = "./taitatsudata/*"
     >>>music_for_train(serv, verbose=True, difficulty=0, diff=True)
     """
+    # test
+    # print("music proccesing test...")
+    # serv = "./data/sample"
+    # music_for_test(serv)
+    # print("test done!")
 
-    serv = "./data/songs"
-    music_for_train([serv])
+    # train 
+    print("preparing all train data processing...")
+    serv = "./data/train"
+    music_for_train(serv)
+    print("all train data processing done!")
+
+
