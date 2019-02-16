@@ -10,3 +10,4 @@ data/pickles/ka_inference.pickle
 data/pickles/test_data.pickle
 data/pickles/train_data.pickle
 data_check.py
+check_train_result.py
