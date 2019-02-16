@@ -44,10 +44,12 @@ class Audio:
             self.data = (self.data[:, 0]+self.data[:, 1])/2
         self.timestamp = []
 
+
     def plotaudio(self, start_t, stop_t):
 
         plt.plot(np.linspace(start_t, stop_t, stop_t-start_t), self.data[start_t:stop_t, 0])
         plt.show()
+
 
     def save(self, filename="./savedmusic.wav", start_t=0, stop_t=None):
 
@@ -55,8 +57,9 @@ class Audio:
             stop_t = self.data.shape[0]
         sf.write(filename, self.data[start_t:stop_t], self.samplerate)
 
+
     def import_tja(self, filename, verbose=False, diff=False, difficulty=None):
-        '''imports tja file and convert it into timestamp'''
+        """imports tja file and convert it into timestamp"""
         
         now = 0.0
         bpm = 100
@@ -108,15 +111,12 @@ class Audio:
                         for i in range(beat):
                             if diff:
                                 if int(sound[i]) in (1, 3, 5, 6, 7):
-                                    self.timestamp.append(
-                                        [int(100*(now+i*60*measure[0]/bpm/beat))/100, 1])
+                                    self.timestamp.append([int(100*(now+i*60*measure[0]/bpm/beat))/100, 1])
                                 elif int(sound[i]) in (2, 4):
-                                    self.timestamp.append(
-                                        [int(100*(now+i*60*measure[0]/bpm/beat))/100, 2])
+                                    self.timestamp.append([int(100*(now+i*60*measure[0]/bpm/beat))/100, 2])
                             else:
                                 if int(sound[i]) != 0:
-                                    self.timestamp.append(
-                                        [int(100*(now+i*60*measure[0]/bpm/beat))/100, int(sound[i])])
+                                    self.timestamp.append([int(100*(now+i*60*measure[0]/bpm/beat))/100, int(sound[i])])
                         now += 60/bpm*measure[0]
                         sound = []
                     else:
@@ -136,10 +136,13 @@ class Audio:
                     self.timestamp = np.array(self.timestamp)
                     break
 
+
     def synthesize(self, diff=True, don="./data/don.wav", ka="./data/ka.wav"):
         
         donsound = sf.read(don)[0]
+        donsound = (donsound[:, 0] + donsound[:, 1]) / 2
         kasound = sf.read(ka)[0]
+        kasound = (kasound[:, 0] + kasound[:, 1]) / 2
         donlen = len(donsound)
         kalen = len(kasound)
         
@@ -153,7 +156,7 @@ class Audio:
                         self.data[timing:timing+kalen] += kasound
                 except ValueError:
                     pass
-        
+
         elif diff == 'don':
             if isinstance(self.timestamp[0], tuple):
                 for stamp in self.timestamp:
@@ -245,14 +248,40 @@ def milden(data):
     return data
 
 
+def smooth(x, window_len=11, window='hanning'):
+    
+    if x.ndim != 1:
+        raise ValueError
+
+    if x.size < window_len:
+        raise ValueError
+
+    if window_len < 3:
+        return x
+
+    if not window in ['flat', 'hanning', 'hamming', 'bartlett', 'blackman']:
+        raise ValueError
+
+    s = np.r_[x[window_len-1:0:-1], x, x[-2:-window_len-1:-1]]
+    # print(len(s))
+    if window == 'flat':  # moving average
+        w = np.ones(window_len, 'd')
+    else:
+        w = eval('np.'+window+'(window_len)')
+
+    y = np.convolve(w/w.sum(), s, mode='valid')
+    
+    return y
+
+
 def music_for_listening(serv, synthesize=True, difficulty=0):
 
     song = Audio(glob(serv+"/*.ogg")[0])
     if synthesize:
         song.import_tja(glob(serv+"/*.tja")[-1], difficulty=difficulty)
         song.synthesize()
-    plt.plot(song.data[1000:1512, 0])
-    plt.show()
+    # plt.plot(song.data[1000:1512, 0])
+    # plt.show()
     song.save("./data/savedmusic.wav")
 
 
@@ -302,29 +331,21 @@ def music_for_test(serv, deletemusic=True, verbose=False):
 
 
 if __name__ == "__main__":
-    
-    """
-    >>># to Test
-    >>>serv = "./data/songs/"
-    >>>music_for_test(serv)
-    >>># to Validation
-    >>>music_for_validation(serv, difficulty=0)
-    >>># to Listening
-    >>>music_for_listening(serv)
-    >>># to Learning
-    >>>serv = "./taitatsudata/*"
-    >>>music_for_train(serv, verbose=True, difficulty=0, diff=True)
-    """
+
     # test
     # print("music proccesing test...")
-    # serv = "./data/sample"
+    # serv = "./data/test"
     # music_for_test(serv)
     # print("test done!")
 
-    # train 
-    print("preparing all train data processing...")
-    serv = "./data/train"
-    music_for_train(serv)
-    print("all train data processing done!")
+    # listening
+    serv = "./data/test"
+    music_for_test(serv)
+
+    # for create train dataset
+    # print("preparing all train data processing...")
+    # serv = "./data/train/*"
+    # music_for_train(serv)
+    # print("all train data processing done!")
 
 

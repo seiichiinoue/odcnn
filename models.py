@@ -15,15 +15,9 @@ classified with a fully-connected network.
 
 class convNet(Chain):
     """
-    copies the neural net used in a paper 
+    copies the neural net used in a paper.
     "Improved musical onset detection with Convolutional Neural Networks".
-    https://ieeexplore.ieee.org/document/6854953
-    
-    Args:
-
-    
-    Example:
-
+    src: https://ieeexplore.ieee.org/document/6854953
     """
 
     def __init__(self):
@@ -47,4 +41,3 @@ class convNet(Chain):
         y = F.sigmoid(self.fc3(x))
         
         return y
-                                

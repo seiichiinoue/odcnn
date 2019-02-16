@@ -3,3 +3,10 @@ __pycache__/
 .ipynb_checkpoints/
 .vscode
 trial/
+demo.ipynb
+data/train/
+data/pickles/don_inference.pickle
+data/pickles/ka_inference.pickle
+data/pickles/test_data.pickle
+data/pickles/train_data.pickle
+data_check.py
