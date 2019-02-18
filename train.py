@@ -122,7 +122,7 @@ def train(songs, epochs, soundlen, saveplace, don_ka=0, split=1):
         song.major_note_index = np.delete(song.major_note_index, np.where(song.major_note_index >= song.feats.shape[2]))
         song.minor_note_index = np.delete(song.minor_note_index, np.where(song.minor_note_index >= song.feats.shape[2]))
 
-        song.answer[song.major_note_index] = 1
+        song.answer[song.major_note_index] = 1.
         song.answer[song.minor_note_index] = 0.26
         song.answer = milden(song.answer)
 
@@ -132,10 +132,11 @@ def train(songs, epochs, soundlen, saveplace, don_ka=0, split=1):
     model.compute_accuracy = False  # not need accuracy cz teacher data is not label; using sigmoid func
     train = data_builder(songs, soundlen, split)
     test = data_builder(songs, soundlen, split)
-    train_iter = iterators.SerialIterator(train, 128)
+    train_iter = iterators.SerialIterator(train, 128, shuffle=False)
     test_iter = iterators.SerialIterator(test, 128, repeat=False, shuffle=False)
-    optimizer = O.SGD(lr=0.02).setup(model)  # tried: 0.01, 0.02, 0.005
+    optimizer = O.SGD(lr=0.02).setup(model)  # tried: 0.01, 0.02
     # optimizer = O.Adam().setup(model)
+    # optimizer = O.MomentumSGD(lr=0.02, momentum=0.9).setup(model)
     updater = training.StandardUpdater(train_iter, optimizer, device=-1)
 
     # build trainer
