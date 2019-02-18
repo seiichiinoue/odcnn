@@ -1,0 +1,7 @@
+chainer
+soundfile
+librosa
+sklearn
+matplotlib
+numpy
+tqdm
