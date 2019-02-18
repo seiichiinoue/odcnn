@@ -12,3 +12,5 @@ data/pickles/train_data.pickle
 data_check.py
 check_train_result.py
 sample/
+train_chainer.py
+train_pytorch.py
