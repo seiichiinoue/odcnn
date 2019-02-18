@@ -1,7 +1,7 @@
 # Musical Onset Detection with Convolutional Neural Networks 
 
 ## Summary
-From Audio File, Extract feature imgage like this
+From Audio File, Extract feature image like this
 
 ![](./image/onset_detection.jpg)
 
