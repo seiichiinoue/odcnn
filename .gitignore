@@ -24,6 +24,7 @@ data/pickles/train_data.pickle
 # util
 infer.sh
 train.sh
+img/
 
 # ignore
 .gitattributes
