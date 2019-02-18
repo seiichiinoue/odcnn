@@ -14,3 +14,5 @@ check_train_result.py
 sample/
 train_chainer.py
 train_pytorch.py
+infer.sh
+train.sh
