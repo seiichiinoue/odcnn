@@ -207,13 +207,13 @@ def fft_and_melscale(song, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel
         
         # get normal frame
         frame = make_frame(song.data, nhop, nfft)
-        print(frame.shape)
+        # print(frame.shape)
 
         # melscaling
         processedframe = fft(window*frame)[:, :nfft//2+1]
         processedframe = np.dot(filt, np.transpose(np.abs(processedframe)**2))
         processedframe = 20*np.log10(processedframe+0.1)
-        print(processedframe.shape)
+        # print(processedframe.shape)
 
         feat_channels.append(processedframe)
     
@@ -233,12 +233,15 @@ def multi_fft_and_melscale(songs, nhop=512, nffts=[1024, 2048, 4096], mel_nband=
 
 def milden(data):
     """put smaller value(0.25) to plus minus 1 frame."""
+    
     for i in range(data.shape[0]):
+        
         if data[i] == 1:
             if i > 0:
                 data[i-1] = 0.25
             if i < data.shape[0] - 1:
                 data[i+1] = 0.25
+        
         if data[i] == 0.26:
             if i > 0:
                 data[i-1] = 0.1
@@ -282,7 +285,7 @@ def music_for_listening(serv, synthesize=True, difficulty=0):
         song.synthesize()
     # plt.plot(song.data[1000:1512, 0])
     # plt.show()
-    song.save("./data/savedmusic.wav")
+    song.save("./data/saved_music.wav")
 
 
 def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
@@ -293,7 +296,7 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
 
     if deletemusic:
         song.data = None
-    with open('./data/pickles/valdata.pickle', mode='wb') as f:
+    with open('./data/pickles/val_data.pickle', mode='wb') as f:
         pickle.dump(song, f)
 
 
@@ -313,11 +316,12 @@ def music_for_train(serv, deletemusic=True, verbose=False, difficulty=0, diff=Fa
         songs.append(song)
 
     multi_fft_and_melscale(songs, nhop, nffts, mel_nband, mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
+    
     if deletemusic:
         for song in songs:
             song.data = None
     
-    with open('./data/pickles/traindata.pickle', mode='wb') as f:
+    with open('./data/pickles/train_data.pickle', mode='wb') as f:
         pickle.dump(songs, f)
 
 
@@ -326,26 +330,29 @@ def music_for_test(serv, deletemusic=True, verbose=False):
     song = Audio(glob(serv+"/*.ogg")[0], stereo=False)
     # song.import_tja(glob(serv+"/*.tja")[-1])
     song.feats = fft_and_melscale(song, include_zero_cross=False)
-    with open('./data/pickles/testdata.pickle', mode='wb') as f:
+    with open('./data/pickles/test_data.pickle', mode='wb') as f:
         pickle.dump(song, f)
 
 
 if __name__ == "__main__":
 
-    # test
-    # print("music proccesing test...")
-    # serv = "./data/test"
-    # music_for_test(serv)
-    # print("test done!")
+    if sys.argv[1] == 'train':
+        print("preparing all train data processing...")
+        serv = "./data/train/*"
+        music_for_train(serv, verbose=True, difficulty=0, diff=True)
+        print("all train data processing done!")    
 
-    # listening
-    serv = "./data/test"
-    music_for_test(serv)
+    if sys.argv[1] == 'test':
+        print("test data proccesing...")
+        serv = "./data/test"
+        music_for_test(serv)
+        print("test done!")
 
-    # for create train dataset
-    # print("preparing all train data processing...")
-    # serv = "./data/train/*"
-    # music_for_train(serv)
-    # print("all train data processing done!")
+    if sys.argv[1] == 'val':
+        print("validation data processing...")
+        serv = "./data/test"
+        music_for_validation(serv)
+        print("done!")
+
 
 
