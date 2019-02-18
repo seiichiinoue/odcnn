@@ -49,9 +49,9 @@ def show(filename):
 
 if __name__ == '__main__':
     
-    with open('./data/pickles/testdata.pickle', mode='rb') as f:
+    with open('./data/pickles/test_data.pickle', mode='rb') as f:
         songs = pickle.load(f)
-        
+
     if sys.argv[1] == 'don':
         result = infer(songs.feats, saved_model="./models/don_model.npz", soundlen=15)
         result = np.reshape(result.data, (-1))
@@ -71,4 +71,5 @@ if __name__ == '__main__':
         result = np.reshape(result.data, (-1))
         with open('./data/pickles/both_inference.pickle', mode='wb') as f:
             pickle.dump(result, f)
+
 
