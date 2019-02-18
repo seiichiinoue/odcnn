@@ -11,8 +11,8 @@ def detection(don_inference, ka_inference, song):
     don_inference = smooth(don_inference, 5)
     ka_inference = smooth(ka_inference, 5)
 
-    don_timestamp = (peak_pick(don_inference, 1, 2, 4, 5, 0., 3)+7)
-    ka_timestamp = (peak_pick(ka_inference, 1, 2, 4, 5, 0., 3)+7)
+    don_timestamp = (peak_pick(don_inference, 1, 2, 4, 5, 0.05, 3)+7)  # 実際は7フレーム目のところの音
+    ka_timestamp = (peak_pick(ka_inference, 1, 2, 4, 5, 0.05, 3)+7)
     
     print(don_timestamp)
     print(ka_timestamp)
@@ -22,8 +22,8 @@ def detection(don_inference, ka_inference, song):
     # print(len(song.timestamp))
     song.synthesize(diff='don')
 
-    song.ka_timestamp = song.don_timestamp
-    # song.ka_timestamp = ka_timestamp[np.where(ka_inference[ka_timestamp] > don_inference[ka_timestamp])]
+    # song.ka_timestamp = song.don_timestamp
+    song.ka_timestamp = ka_timestamp[np.where(ka_inference[ka_timestamp] > don_inference[ka_timestamp])]
     song.timestamp=song.ka_timestamp*512/song.samplerate
     # print(len(song.timestamp))
     song.synthesize(diff='ka')
@@ -69,7 +69,7 @@ def create_tja(filename, song, don_timestamp, ka_timestamp=None):
 
 if __name__ == "__main__":
     
-    with open('./data/pickles/testdata.pickle', mode='rb') as f:
+    with open('./data/pickles/test_data.pickle', mode='rb') as f:
         song = pickle.load(f)
 
     with open('./data/pickles/don_inference.pickle', mode='rb') as f:
