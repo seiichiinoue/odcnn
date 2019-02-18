@@ -1,18 +1,29 @@
+# init file
 .DS_Store
 __pycache__/
 .ipynb_checkpoints/
 .vscode
+
+# trial
 trial/
 demo.ipynb
-data/train/
-data/pickles/don_inference.pickle
-data/pickles/ka_inference.pickle
-data/pickles/test_data.pickle
-data/pickles/train_data.pickle
 data_check.py
 check_train_result.py
 sample/
 train_chainer.py
 train_pytorch.py
+data/test2/
+
+# large files
+data/train/
+data/pickles/don_inference.pickle
+data/pickles/ka_inference.pickle
+data/pickles/test_data.pickle
+data/pickles/train_data.pickle
+
+# util
 infer.sh
 train.sh
+
+# ignore
+.gitattributes
