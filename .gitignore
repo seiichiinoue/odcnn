@@ -24,6 +24,7 @@ data/pickles/ka_inference.pickle
 data/pickles/test_data.pickle
 data/pickles/train_data.pickle
 data/log/
+
 # util
 infer.sh
 train.sh
