@@ -292,7 +292,7 @@ def music_for_validation(serv, deletemusic=True, verbose=False, difficulty=1):
 
     song = Audio(glob(serv+"/*.ogg")[0], stereo=False)
     song.import_tja(glob(serv+"/*.tja")[-1], difficulty=difficulty)
-    song.feats = fft_and_melscale(song, nhop, nffts, mel_nband, mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
+    song.feats = fft_and_melscale(song, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False)
 
     if deletemusic:
         song.data = None
@@ -344,13 +344,13 @@ if __name__ == "__main__":
 
     if sys.argv[1] == 'test':
         print("test data proccesing...")
-        serv = "./data/test"
+        serv = "./data/test/"
         music_for_test(serv)
-        print("test done!")
+        print("test data processing done!")
 
     if sys.argv[1] == 'val':
         print("validation data processing...")
-        serv = "./data/test"
+        serv = "./data/validation"
         music_for_validation(serv)
         print("done!")
 
