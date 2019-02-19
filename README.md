@@ -67,6 +67,8 @@ $python synthesyze.py
 
 - [Dance Dance Convolution](https://arxiv.org/pdf/1703.06891.pdf)
 
+- [Create with AI](http://createwith.ai/paper/20170327/393)
+
 - Tom Mullaney's Article; [Rythm Games with Neural Networks](http://tommymullaney.com/projects/rhythm-games-neural-networks)
 
 - Woody's Article; [Musical Data Processing with CNN](https://qiita.com/woodyOutOfABase/items/01cc43fafe767d3edf62)

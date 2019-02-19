@@ -28,7 +28,8 @@ data/log/
 # util
 infer.sh
 train.sh
-img/
+files/img/
+files/demo/
 plot.py
 
 # ignore
