@@ -10,9 +10,11 @@ demo.ipynb
 data_check.py
 check_train_result.py
 sample/
-train_chainer.py
-train_pytorch.py
 data/test2/
+model_chainer.py
+model2.chainer.py
+train_chainer.py
+infer_chainer.py
 
 # large files
 data/train/

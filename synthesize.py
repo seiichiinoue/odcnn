@@ -28,7 +28,7 @@ def detection(don_inference, ka_inference, song):
     # print(len(song.timestamp))
     song.synthesize(diff='ka')
 
-    song.save("./data/predict/created_music.wav")
+    song.save("./data/inference/inferred_music.wav")
 
 
 def create_tja(filename, song, don_timestamp, ka_timestamp=None):
@@ -79,5 +79,5 @@ if __name__ == "__main__":
         ka_inference = pickle.load(f)
 
     detection(don_inference, ka_inference, song)
-    create_tja("./data/predict/result.tja",song, song.don_timestamp, song.ka_timestamp)
+    create_tja("./data/inference/inferred_notes.tja",song, song.don_timestamp, song.ka_timestamp)
 
