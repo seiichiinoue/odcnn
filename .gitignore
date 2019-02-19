@@ -15,6 +15,7 @@ model_chainer.py
 model2.chainer.py
 train_chainer.py
 infer_chainer.py
+check_infer.ipynb
 
 # large files
 data/train/
