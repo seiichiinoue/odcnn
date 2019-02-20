@@ -39,26 +39,26 @@ Using Chainer, implemented musical onset detectioner and apply it to Taikosanjir
 - install requirement
 
 ```
-$pip install -r reqirement.txt
+$ pip install -r reqirement.txt
 ```
 - then, train model.
 
 ```
-$python train.py don
-$python train.py ka
+$ python train.py don
+$ python train.py ka
 ```
 
 - then predict onset probability.
 
 ```
-$python infer.py don
-$python infer.py ka
+$ python infer.py don
+$ python infer.py ka
 ```
 
 - and create notes.
 
 ```
-$python synthesyze.py 
+$ python synthesyze.py 
 ```
 
 ### References
