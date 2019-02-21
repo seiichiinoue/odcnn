@@ -20,7 +20,7 @@ class convNet(nn.Module):
     src: https://ieeexplore.ieee.org/document/6854953
     """
 
-    def __init__(self, soundlen=15, minibatch=1):
+    def __init__(self):
 
         super(convNet, self).__init__()
         # model
@@ -29,9 +29,6 @@ class convNet(nn.Module):
         self.fc1 = nn.Linear(1120, 256)
         self.fc2 = nn.Linear(256, 120)
         self.fc3 = nn.Linear(120, 1)
-        # etc
-        self.soundlen = 15
-        self.minibatch = 1
 
 
     def forward(self, x, istraining=False, minibatch=1):
@@ -167,9 +164,9 @@ class convNet(nn.Module):
                     running_loss += loss.data.item()
 
             with open(log, 'a') as f:
-                print("epoch: {} | running_loss: {} | ".format(i+1, running_loss), file=f)
+                print("epoch: %.d running_loss: %.10f " % (i+1, running_loss), file=f)
 
-            print("epoch: {} | running_loss: {} | ".format(i+1, running_loss))
+            print("epoch: %.d running_loss: %.10f" % (i+1, running_loss))
             
             running_loss = 0    
 
@@ -180,7 +177,7 @@ class convNet(nn.Module):
                 val_loss = loss.data.item()
 
                 with open(log, 'a') as f:
-                    print("val_loss: {} ".format(val_loss), file=f)
+                    print("val_loss: %.10f " % (val_loss), file=f)
 
         torch.save(self.state_dict(), save_place)
 
