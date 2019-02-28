@@ -19,6 +19,7 @@ check_infer.ipynb
 
 # large files
 data/train/
+data/train/reduced/
 data/pickles/don_inference.pickle
 data/pickles/ka_inference.pickle
 data/pickles/test_data.pickle
