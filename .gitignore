@@ -34,4 +34,4 @@ files/demo/
 plot.py
 
 # ignore
-.gitattributes
+# .gitattributes
