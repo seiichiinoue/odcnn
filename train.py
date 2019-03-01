@@ -8,9 +8,13 @@ if __name__ == '__main__':
     net = convNet()
     net = net.to(device)
 
-    
-    with open('./data/pickles/train_data.pickle', mode='rb') as f:
-        songs = pickle.load(f)
+    try:
+        with open('./data/pickles/train_data.pickle', mode='rb') as f:
+            songs = pickle.load(f)
+    except FileNotFoundError:
+        with open('./data/pickles/train_reduced.pickle', mode='rb') as f:
+            songs = pickle.load(f)
+
 
     minibatch = 128
     soundlen = 15
