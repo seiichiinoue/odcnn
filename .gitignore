@@ -22,7 +22,6 @@ data/train/
 data/train/reduced/
 data/pickles/don_inference.pickle
 data/pickles/ka_inference.pickle
-data/pickles/test_data.pickle
 data/pickles/train_data.pickle
 data/log/
 
