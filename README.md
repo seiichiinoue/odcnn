@@ -33,6 +33,9 @@ Using Chainer, implemented musical onset detectioner and apply it to Taikosanjir
 - librosa
 - tqdm
 
+### Install Pytorch
+
+you can download from [here](https://pytorch.org/get-started/locally/)
 
 ### Command
 
