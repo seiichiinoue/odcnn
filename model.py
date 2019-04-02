@@ -91,6 +91,7 @@ class convNet(nn.Module):
         
             if (i + 1) % minibatch == 0:
                 yield (torch.from_numpy(np.array(x)).float())
+                x = []
         
         if len(x) != 0:
             yield (torch.from_numpy(np.array(x)).float())
