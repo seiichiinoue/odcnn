@@ -27,6 +27,7 @@ Using Chainer, implemented musical onset detectioner and apply it to Taikosanjir
 
 ### Requirement
 
+- **git-lfs** (for downloading large dataset)
 - python3
 - pytorch
 - soundfile
