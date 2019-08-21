@@ -4,7 +4,7 @@ from music_processor import *
 
 if __name__ == '__main__':
 
-    device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     net = convNet()
     net = net.to(device)
 
