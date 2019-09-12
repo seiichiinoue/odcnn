@@ -1,15 +1,12 @@
 # Musical Onset Detection with Convolutional Neural Networks 
 
 ## Summary
-From Audio File, Extract feature image like this
 
-![](./image/onset_detection.jpg)
-
-Then, Build model and train
+- model architecture: simple convolutional neural network
 
 ![](./image/model.png)
 
-result
+- prediction: probability of onset
 
 ![](./image/result.jpg)
 
