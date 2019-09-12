@@ -38,7 +38,7 @@ Using Chainer, implemented musical onset detectioner and apply it to Taikosanjir
 
 you can download from [here](https://pytorch.org/get-started/locally/)
 
-### Command
+### Running Sample
 
 - install requirement
 
@@ -46,7 +46,7 @@ you can download from [here](https://pytorch.org/get-started/locally/)
 $ pip install -r reqirement.txt
 ```
 
-- before training, prepare audio dataset.
+- before training, prepare audio dataset. (and pickle data.)
 
 ```
 $ python music_processor.py reduced
@@ -60,20 +60,27 @@ $ python train.py don
 $ python train.py ka
 ```
 
-- then predict onset probability.
+- then predict onset probability with trained model.
 
 ```
 $ python infer.py don
 $ python infer.py ka
 ```
 
-- and create notes.
+- and create notes and corresponding music from inferred data.
 
 ```
 $ python synthesyze.py 
 ```
 
-### References
+### Notice
+
+- `train_reduced` in this repo is too small for training, because of limitation of uploadable file size of git, I wasn't able to upload enough size training data.
+
+- if you want to train model with larger data, you could download audio data and corresponding notes [here](https://taikosanjiro-humenroom.net/original/).
+
+
+## References
 
 - [IMPROVED MUSICAL ONSET DETECTION WITH CONVOLUTIONAL NEURAL NETWORKS](http://www.ofai.at/~jan.schlueter/pubs/2014_icassp.pdf)
 
