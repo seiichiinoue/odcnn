@@ -169,7 +169,3 @@ epoch: 97 | running_loss: 71.01133749634027 |
 epoch: 98 | running_loss: 71.0916684679687 | 
 epoch: 99 | running_loss: 71.67253611795604 | 
 epoch: 100 | running_loss: 71.38814081531018 | 
-epoch: 1 running_loss: 95.8530499376 
-epoch: 1 running_loss: 35.1839207597 
-epoch: 1 running_loss: 92.6820458323 
-epoch: 1 running_loss: 34.4148913100 
