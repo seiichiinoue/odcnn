@@ -1,0 +1,171 @@
+running loss is 72.78910095617175
+running loss is 63.97247711196542
+running loss is 62.25188874080777
+running loss is 60.07250649854541
+running loss is 59.818808844313025
+running loss is 59.520528957247734
+running loss is 59.07554424740374
+running loss is 59.86444169096649
+running loss is 59.22017731331289
+running loss is 58.356068978086114
+running loss is 59.150995364412665
+running loss is 57.673820063471794
+running loss is 58.375989919528365
+running loss is 58.06967039965093
+running loss is 58.16234558261931
+running loss is 58.035971658304334
+running loss is 57.43471781536937
+running loss is 58.46797325834632
+running loss is 58.098985981196165
+running loss is 58.679203594103456
+running loss is 57.724639846011996
+running loss is 57.15460645966232
+running loss is 57.69862590543926
+running loss is 56.70468636229634
+running loss is 57.272892363369465
+running loss is 58.42527979053557
+running loss is 58.33514271304011
+running loss is 56.653580881655216
+running loss is 57.129427529871464
+running loss is 56.92645753547549
+running loss is 57.19866990298033
+running loss is 56.54132225178182
+running loss is 57.111759915947914
+running loss is 56.75808762386441
+running loss is 58.090820794925094
+running loss is 57.86165382526815
+running loss is 57.6064650695771
+running loss is 57.873527731746435
+running loss is 56.57880296930671
+running loss is 57.164210595190525
+running loss is 57.44695178605616
+running loss is 57.121801264584064
+running loss is 57.26759017072618
+running loss is 57.10859173536301
+running loss is 56.95350103266537
+running loss is 56.83475463651121
+running loss is 57.45392046123743
+running loss is 56.50434181652963
+running loss is 56.092821879312396
+running loss is 55.44030195847154
+running loss is 57.14194570668042
+running loss is 56.163469936698675
+running loss is 57.19307890161872
+running loss is 56.98816270381212
+running loss is 56.51632507331669
+running loss is 55.704778373241425
+running loss is 56.100863721221685
+running loss is 56.84767198562622
+running loss is 56.17508444190025
+running loss is 56.63623051904142
+running loss is 56.979952650144696
+running loss is 56.41984595730901
+running loss is 57.385565392673016
+running loss is 56.237847002223134
+running loss is 56.17686326056719
+running loss is 56.2003785520792
+running loss is 56.08052554167807
+running loss is 56.23530500382185
+running loss is 56.22428924590349
+running loss is 55.85500235110521
+epoch: 0 | running_loss: 71.4993927180767 | 
+epoch: 1 | running_loss: 70.69497874006629 | 
+epoch: 2 | running_loss: 64.11947712302208 | 
+epoch: 3 | running_loss: 61.32412888109684 | 
+epoch: 4 | running_loss: 60.183437291532755 | 
+epoch: 5 | running_loss: 60.3026802316308 | 
+epoch: 6 | running_loss: 58.956719817593694 | 
+epoch: 7 | running_loss: 59.96574401296675 | 
+epoch: 8 | running_loss: 58.45997231453657 | 
+epoch: 9 | running_loss: 58.40376190468669 | 
+epoch: 10 | running_loss: 58.283292688429356 | 
+epoch: 11 | running_loss: 58.11778878606856 | 
+epoch: 12 | running_loss: 58.8098205588758 | 
+epoch: 13 | running_loss: 57.25905218720436 | 
+epoch: 14 | running_loss: 58.23548183217645 | 
+epoch: 15 | running_loss: 57.873323772102594 | 
+epoch: 16 | running_loss: 57.8483869060874 | 
+epoch: 17 | running_loss: 58.17511583864689 | 
+epoch: 18 | running_loss: 57.20584015548229 | 
+epoch: 19 | running_loss: 57.61504491046071 | 
+epoch: 20 | running_loss: 56.67299916408956 | 
+epoch: 21 | running_loss: 57.835815116763115 | 
+epoch: 22 | running_loss: 58.407535990700126 | 
+epoch: 23 | running_loss: 57.56878708675504 | 
+epoch: 24 | running_loss: 57.268620716407895 | 
+epoch: 25 | running_loss: 57.28476323746145 | 
+epoch: 26 | running_loss: 58.70039518363774 | 
+epoch: 27 | running_loss: 57.73231372795999 | 
+epoch: 28 | running_loss: 57.626549107953906 | 
+epoch: 29 | running_loss: 57.447131633758545 | 
+epoch: 30 | running_loss: 57.163179852068424 | 
+epoch: 31 | running_loss: 56.825705809518695 | 
+epoch: 32 | running_loss: 57.04122718423605 | 
+epoch: 33 | running_loss: 57.9684668276459 | 
+epoch: 34 | running_loss: 57.25755126401782 | 
+epoch: 35 | running_loss: 57.9145953822881 | 
+epoch: 36 | running_loss: 57.450199607759714 | 
+epoch: 37 | running_loss: 57.09564927779138 | 
+epoch: 38 | running_loss: 56.90358314476907 | 
+epoch: 39 | running_loss: 56.089078491553664 | 
+epoch: 40 | running_loss: 56.61547368392348 | 
+epoch: 41 | running_loss: 57.21579426713288 | 
+epoch: 42 | running_loss: 56.785295182839036 | 
+epoch: 43 | running_loss: 56.43920716829598 | 
+epoch: 44 | running_loss: 57.05355392768979 | 
+epoch: 45 | running_loss: 57.13959171809256 | 
+epoch: 46 | running_loss: 57.19453796930611 | 
+epoch: 47 | running_loss: 57.000945538282394 | 
+epoch: 48 | running_loss: 56.14760519005358 | 
+epoch: 49 | running_loss: 56.53366909921169 | 
+epoch: 50 | running_loss: 55.5883549079299 | 
+epoch: 51 | running_loss: 57.887627858668566 | 
+epoch: 52 | running_loss: 56.57783160172403 | 
+epoch: 53 | running_loss: 56.226976331323385 | 
+epoch: 54 | running_loss: 56.47608543932438 | 
+epoch: 55 | running_loss: 56.59758294187486 | 
+epoch: 56 | running_loss: 56.813902739435434 | 
+epoch: 57 | running_loss: 57.04241728037596 | 
+epoch: 58 | running_loss: 56.61565658636391 | 
+epoch: 59 | running_loss: 57.1554908528924 | 
+epoch: 60 | running_loss: 56.342346319928765 | 
+epoch: 61 | running_loss: 56.48590406216681 | 
+epoch: 62 | running_loss: 56.20933470316231 | 
+epoch: 63 | running_loss: 56.971882151439786 | 
+epoch: 64 | running_loss: 56.15658810734749 | 
+epoch: 65 | running_loss: 56.391099236905575 | 
+epoch: 66 | running_loss: 57.40628339536488 | 
+epoch: 67 | running_loss: 56.24518341757357 | 
+epoch: 68 | running_loss: 56.75067335367203 | 
+epoch: 69 | running_loss: 56.809351371601224 | 
+epoch: 70 | running_loss: 56.66583930328488 | 
+epoch: 71 | running_loss: 56.89099847339094 | 
+epoch: 72 | running_loss: 55.919097581878304 | 
+epoch: 73 | running_loss: 55.66317469254136 | 
+epoch: 74 | running_loss: 56.5641079377383 | 
+epoch: 75 | running_loss: 57.042112711817026 | 
+epoch: 76 | running_loss: 57.056932074949145 | 
+epoch: 77 | running_loss: 56.61678994819522 | 
+epoch: 78 | running_loss: 56.44927095994353 | 
+epoch: 79 | running_loss: 57.08036492578685 | 
+epoch: 80 | running_loss: 56.62980237789452 | 
+epoch: 81 | running_loss: 56.60681439191103 | 
+epoch: 82 | running_loss: 55.77478155307472 | 
+epoch: 83 | running_loss: 55.520224653184414 | 
+epoch: 84 | running_loss: 56.197511333972216 | 
+epoch: 85 | running_loss: 56.92891077324748 | 
+epoch: 86 | running_loss: 56.80871987901628 | 
+epoch: 87 | running_loss: 55.73037357069552 | 
+epoch: 88 | running_loss: 56.336965814232826 | 
+epoch: 89 | running_loss: 55.888725558295846 | 
+epoch: 90 | running_loss: 55.96906600520015 | 
+epoch: 91 | running_loss: 55.69761613756418 | 
+epoch: 92 | running_loss: 56.49363281019032 | 
+epoch: 93 | running_loss: 56.808576971292496 | 
+epoch: 94 | running_loss: 56.2190976832062 | 
+epoch: 95 | running_loss: 57.16673885472119 | 
+epoch: 96 | running_loss: 56.329254008829594 | 
+epoch: 97 | running_loss: 56.48761451989412 | 
+epoch: 98 | running_loss: 56.03480648621917 | 
+epoch: 99 | running_loss: 56.67253525368869 | 
+epoch: 100 | running_loss: 56.06297733075917 | 
