@@ -16,14 +16,17 @@ model2.chainer.py
 train_chainer.py
 infer_chainer.py
 check_infer.ipynb
+models/chainer/
 
 # large files
 data/train/
-data/train/reduced/
+data/train_reduced/
 data/pickles/don_inference.pickle
 data/pickles/ka_inference.pickle
 data/pickles/train_data.pickle
 data/log/
+data/test/
+data/validation/
 
 # util
 infer.sh
