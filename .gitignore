@@ -20,7 +20,6 @@ models/chainer/
 
 # large files
 data/train/
-data/train_reduced/
 data/pickles/don_inference.pickle
 data/pickles/ka_inference.pickle
 data/pickles/train_data.pickle
