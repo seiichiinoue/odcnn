@@ -14,9 +14,9 @@ if __name__ == '__main__':
     if sys.argv[1] == 'don':
         
         if torch.cuda.is_available():
-            net.load_state_dict(torch.load('./models/pytorch/don_model.pth'))
+            net.load_state_dict(torch.load('./models/don_model.pth'))
         else:
-            net.load_state_dict(torch.load('./models/pytorch/don_model.pth', map_location='cpu'))
+            net.load_state_dict(torch.load('./models/don_model.pth', map_location='cpu'))
 
         inference = net.infer(song.feats, device, minibatch=4192)
         inference = np.reshape(inference, (-1))
@@ -27,9 +27,9 @@ if __name__ == '__main__':
     if sys.argv[1] == 'ka':
         
         if torch.cuda.is_available():
-            net.load_state_dict(torch.load('./models/pytorch/ka_model.pth'))
+            net.load_state_dict(torch.load('./models/ka_model.pth'))
         else:
-            net.load_state_dict(torch.load('./models/pytorch/ka_model.pth', map_location='cpu'))
+            net.load_state_dict(torch.load('./models/ka_model.pth', map_location='cpu'))
 
         inference = net.infer(song.feats, device, minibatch=4192)
         inference = np.reshape(inference, (-1))

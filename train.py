@@ -21,7 +21,7 @@ if __name__ == '__main__':
     epoch = 100
 
     if sys.argv[1] == 'don':
-        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/pytorch/don_model.pth', log='./data/log/pytorch/don.txt', don_ka=1)
+        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/don_model.pth', log='./data/log/pytorch/don.txt', don_ka=1)
     
     if sys.argv[1] == 'ka':
-        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/pytorch/ka_model.pth', log='./data/log/pytorch/ka.txt', don_ka=2)
+        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/ka_model.pth', log='./data/log/pytorch/ka.txt', don_ka=2)

@@ -97,7 +97,7 @@ class convNet(nn.Module):
             yield (torch.from_numpy(np.array(x)).float())
 
 
-    def train(self, songs, minibatch, epoch, device, soundlen=15, val_song=None, save_place='./models/pytorch/model.pth', log='./log/pytorch/log.txt', don_ka=0):
+    def train(self, songs, minibatch, epoch, device, soundlen=15, val_song=None, save_place='./models/model.pth', log='./log/pytorch/log.txt', don_ka=0):
         """
         Args:
             songs: the list of song
@@ -211,8 +211,8 @@ if __name__ == '__main__':
     epoch = 100
 
     if sys.argv[1] == 'don':
-        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/pytorch/don_model.pth', log='./data/log/pytorch/don.txt', don_ka=1)
+        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/don_model.pth', log='./data/log/pytorch/don.txt', don_ka=1)
     
     if sys.argv[1] == 'ka':
-        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/pytorch/ka_model.pth', log='./data/log/pytorch/ka.txt', don_ka=2)
+        net.train(songs=songs, minibatch=minibatch, val_song=None, epoch=epoch, device=device, soundlen=soundlen, save_place='./models/ka_model.pth', log='./data/log/pytorch/ka.txt', don_ka=2)
 
