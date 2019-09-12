@@ -45,6 +45,14 @@ you can download from [here](https://pytorch.org/get-started/locally/)
 ```
 $ pip install -r reqirement.txt
 ```
+
+- before training, prepare audio dataset.
+
+```
+$ python music_processor.py reduced
+$ python music_processor.py test
+```
+
 - then, train model.
 
 ```

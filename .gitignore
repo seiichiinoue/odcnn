@@ -23,8 +23,6 @@ data/train/
 data/pickles/don_inference.pickle
 data/pickles/ka_inference.pickle
 data/pickles/train_data.pickle
-data/test/
-data/validation/
 
 # util
 infer.sh
