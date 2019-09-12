@@ -324,6 +324,30 @@ def music_for_train(serv, deletemusic=True, verbose=False, difficulty=0, diff=Fa
     with open('./data/pickles/train_data.pickle', mode='wb') as f:
         pickle.dump(songs, f)
 
+def music_for_train_reduced(serv, deletemusic=True, verbose=False, difficulty=0, diff=False, nhop=512, nffts=[1024, 2048, 4096], mel_nband=80, mel_freqlo=27.5, mel_freqhi=16000.0, include_zero_cross=False):
+    
+    songplaces = glob(serv)
+    songs = []
+    
+    for songplace in songplaces:
+        
+        if verbose:
+            print(songplace)
+        
+        song = Audio(glob(songplace+"/*.ogg")[0])
+        song.import_tja(glob(songplace+"/*.tja")[-1], difficulty=difficulty, diff=True)
+        song.data = (song.data[:, 0]+song.data[:, 1])/2
+        songs.append(song)
+
+    multi_fft_and_melscale(songs, nhop, nffts, mel_nband, mel_freqlo, mel_freqhi, include_zero_cross=include_zero_cross)
+    
+    if deletemusic:
+        for song in songs:
+            song.data = None
+    
+    with open('./data/pickles/train_reduced.pickle', mode='wb') as f:
+        pickle.dump(songs, f)
+
 
 def music_for_test(serv, deletemusic=True, verbose=False):
 
@@ -354,5 +378,9 @@ if __name__ == "__main__":
         music_for_validation(serv)
         print("done!")
 
+    if sys.argv[1] == 'reduced':
+        serv = './data/train_reduced/*'
+        music_for_train_reduced(serv, verbose=True, difficulty=0, diff=True)
+        
 
 
