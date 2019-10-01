@@ -17,7 +17,7 @@ This repository is implementation of Jan Schlüter and Sebastian Böck's ["IMP
 ABSTRACT:
 >Musical onset detection is one of the most elementary tasks in music analysis, but still only solved imperfectly for polyphonic music signals. Interpreted as a computer vision problem in spectrograms, Convolutional Neural Networks (CNNs) seem to be an ideal fit. On a dataset of about 100 minutes of music with 26k annotated onsets, we show that CNNs outperform the previous state-of-the-art while requiring less manual preprocessing. Investigating their inner workings, we find two key advantages over hand-designed methods: Using separate detectors for percussive and harmonic onsets, and combining results from many minor variations of the same scheme. The results suggest that even for well-understood signal processing tasks, machine learning can be superior to knowledge engineering.
 
-Using Chainer, implemented musical onset detectioner and apply it to Taikosanjiro which is sounds game like taiko-no-tatsujin
+Using PyTorch, implemented musical onset detectioner and apply it to Taikosanjiro which is sounds game like taiko-no-tatsujin
 
 
 ## Usage
